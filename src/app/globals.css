@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+/* Site colours: change a colour here and it updates everywhere */
+:root {
+  --paper: #faf5f0; /* light background */
+  --sand: #efdccf; /* blush background (accent colour) */
+  --canvas: #fffdfa; /* white background */
+  --ink: #22394a; /* main blue (primary colour) for headings and buttons */
+  --ink-soft: #4a5a66; /* body text */
+  --accent: #c0765c; /* clay (secondary colour) for handwritten words */
+  --accent-strong: #9e5540; /* darker clay, easy to read in small text */
+  --line: rgb(34 57 74 / 0.16);
+  --overlay: #1e3342;
+  --overlay-opacity: 0.55;
+  --on-dark: #fbf3ec;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-sand: var(--sand);
+  --color-canvas: var(--canvas);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-line: var(--line);
+  --color-overlay: var(--overlay);
+  --color-on-dark: var(--on-dark);
+
+  --font-serif: var(--font-display), "Times New Roman", serif;
+  --font-sans: var(--font-body), system-ui, sans-serif;
+  --font-script: var(--font-hand), cursive;
+}
+
+/* Text sizes */
+
+@utility t-h1 {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(2.583rem, 1.9rem + 2.2vw, 3.745rem); /* 41px → 60px */
+  line-height: 1.254;
+  letter-spacing: -0.01em;
+}
+@utility t-h2 {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(2.14rem, 1.7rem + 1.4vw, 2.99rem); /* 34px → 48px */
+  line-height: 1.29;
+  letter-spacing: -0.01em;
+}
+@utility t-h3 {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(1.9rem, 1.6rem + 0.9vw, 2.45rem); /* 30px → 39px */
+  line-height: 1.32;
+  letter-spacing: -0.01em;
+}
+@utility t-h4 {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(1.5rem, 1.35rem + 0.4vw, 1.694rem); /* 24px → 27px */
+  line-height: 1.36;
+  letter-spacing: -0.01em;
+}
+@utility t-body {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: clamp(1rem, 0.97rem + 0.08vw, 1.0455rem); /* 16px → 16.7px */
+  line-height: 1.8;
+}
+@utility t-lead {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 0.9375rem; /* 15px */
+  line-height: 1.8;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+@utility t-eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.8;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+@utility t-button {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 0.7755rem; /* 12.4px */
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Side spacing for header and footer */
+@utility px-edge {
+  padding-inline: clamp(1.5rem, 5vw, 4.5rem);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;    /* Stop menu links just below the fixed header */
+}
+@media (min-width: 48rem) {
+  html {
+    scroll-padding-top: 115px;
+  }
+}
+
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--sand);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
